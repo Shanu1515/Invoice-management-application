@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <div class='logo'>
+        <img src="images/Group 20399.svg" style="display: inline-block;">
+        <img src="images/logo.svg">
+    </div>
+
+</head>
+<title>Highradius webapp project</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' type='text/css' href='main.css'>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+
+
+<body onload="showTable()" style=" background: radial-gradient(closest-side at 50% 50%, #58687E 0%, #39495E 100%) 0% 0% ;
+background-repeat: no-repeat;
+opacity: 1;">
+    <p class="starting">
+        Invoice List
+    </p>
+    
+    
+    <div class="invoice">
+        <div class="nav">
+            <button class="add" id="open"><i class="fa">&#xf067;</i>Add</button>
+            
+            <div id="addmod" class="modal">
+
+                <div class="modal1">
+                    <span class="close">&times;</span>
+                    <p style="font-size: 28px;">Add Invoice</p>
+
+                </div>
+                <hr class="newone">
+
+                
+                <form class='form1'>
+                    <p>
+                        <label for="a">Customer Name</label>
+                        <span class="star">*</span>
+                        <input id="a" type="text">
+                        <label for="a" class="date">Due Date </label>
+                        <span class="star">*</span>
+                        <span class="a2"><input type="date">
+                            
+</span>
+                    </p>
+                
+
+                    <p>
+                        
+                        <label for="b">Customer No.</label>
+                        <span class="star">*</span>
+                        <span class="abb"><input id="b" type="text"></span>
+                        <label for="a" class="date1">Notes</label>
+                        
+                        <span class="a1"><input type="textarea"></span>
+
+                    </p>
+
+                    <p>
+                        <label for="a">Invoice No</label>
+                        <span class="star">*</span>
+                        <span class="abbb"><input id="a" type="text"></span>
+                    </p>
+
+                    <p>
+                        <label for="b">Invoice Amount</label>
+                        <span class="star">*</span>
+                        <span class="abbcc"><input id="b" type="text"></span>
+                    </p>
+
+                </form>
+                <hr class="newone">
+                <button class='close1'>
+                Cancel
+            </button><button class='close2'>
+                Clear
+            </button>
+            <button class='close3' onclick="submitnow()">Add</button>
+            <div id="snackbar">Some text some message..</div>
+            
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <button class="editnew" id="open1"> <i class="large material-icons" style="font-size: 15px;">create</i>Edit</button>
+            <div id="editwala" class="editmodal">
+
+                <div class="newmodal1">
+                    <span class="closee">&times;</span>
+                    <p>Edit Invoice</p>
+                    <label for="b">Customer No.</label>
+                    <span class="star">*</span>
+                    <span><input id="b" type="text"></span><br><br>
+                    <label>Notes</label>
+                    <span class="star">*</span>
+                    <span class="eedit"><input type="textarea"></span>
+
+
+                </div>
+                <hr class="newone">
+                <button class='close0'>
+                Cancel
+            </button><button class='close21'>
+                Reset
+            </button>
+            <button class='close31'>
+                Save
+            </button>
+            </div>
+
+
+            <button class='deletenew' id='op'><i class="large material-icons" style="font-size: 15px;">minimize</i> Delete
+            </button>
+            <div id="delmod1" class="deletemodal">
+
+                <div class="newmodal2">
+                    <span class="closeee">&times;</span>
+                    <p>Delete Invoice</p>
+                    <hr class="newone">
+                    <p style="font-size: 20px;">You'll lose your record(s) after this action. We can't recover them once you delete.<br><br> Are you sure you want to <span class='del'> permanently delete</span> them?</p>
+                    <hr class="newone">
+                    </button><button class='close22'>
+                    Cancel
+                </button><button class='close32'>
+                    Delete
+                </button>
+                </div>
+
+            </div>
+
+
+            <span class="input">
+                <input type="search" name="a" placeholder="Search by invoice number">
+            </span>
+            
+            
+            <div class="table">
+                <table id="main-table" style="width:100%" >
+                    <tr class="header">
+
+                        <th class="customername"><span class="space"><input type="checkbox" onclick="toggle(this);"></span>Customer Name</th>
+                        <th class="customerno">Customer #</th>
+                        <th class="invoi">Invoice #</th>
+                        <th class='amo'>Invoice Amount</th>
+                        <th class='Due'>Due Date</th>
+                        <th class='Predicted'>Predicted Payement Date</th>
+                        <th class="notes">Notes</th>
+
+
+
+                    </tr>
+                    
+                    
+                    <tbody id='tableyeh'>
+                    </tbody>
+                </table>
+                
+            </div>
+            <button class="buttonprev" type="button" onclick="myPaginationfunctwo()"><i class="fa">&#x2190;</i>Prev</button>
+            <button class="buttonnext" type="button" onclick="myPaginationfunc()">Next<i class="fa">&#x2192;</i></button>
+            <!--<footer class="center-align">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="javascript:myPaginationfunc();">2</a></li>
+                    <li class="waves-effect"><a href="javascript:myPaginationfunc();">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                  </ul>
+            </footer>-->
+
+
+
+
+     </div>
+</div>
+
+    <script src="main.js"></script>
+    <script src="index.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+    <script>
+     var start=0;
+    const showTable=()=>{   
+    fetch(`http://localhost:8080/H2HBABBA2553/demo?start=${start}&limit=20`).then( (apid )=>{
+    	console.log(apid);
+    	return apid.json();
+    }
+   ).then((actualdata)=>{
+	   console.log(actualdata);
+	   const tableBody=document.getElementById('tableyeh');
+	   let cona="";
+	   for(let row of actualdata){
+		   cona+=`<tr>
+		  
+	 	
+		    <td class="customername"><span class="space"><input type="checkbox"></span>${row.name_customer}</td>
+		    <td class="customerno">${row.cust_number}</td>
+		    <td class="invoi">${row.invoice_id}</td>
+		    <td class="amo">${row.total_open_amount}k</td>
+		    <td class="Due">${row.due_in_date}</td>
+		    <td class='Predicted'>${row.predicted_payment_date}</td>
+		    <td class="notes">NA</td>
+		    
+		     </tr> `;
+		    
+	   }
+	   tableBody.innerHTML=cona; 
+	   
+	  
+	   
+	   
+	   })
+    };
+
+
+	   </script>
+	   <script>
+           
+ 
+
+    </script>
+</body>
+
+</html>
